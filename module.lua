@@ -1,170 +1,92 @@
--- a = "hello world";
--- t.n = t,n + 1;
-a,b = 10, "hello";
-print(a,b);
-i = 0;
-while(i < 2)
-	do
-	print("循环2次");
-	i = i + 1; 
-end
-if(0)
-	then
-	print("0 is true");
-else
-	print("0 is false");
+module = {}
 
-end
+module.constant = "this is a constant";
 
-function max(number1, number2)
+function module.func1( ... )
 	-- body
-	if(number1 > number2) then
-		result = number1;
-		else
-			result = number2
-			end
-			return result;
+	io.write("这是一个公有函数！\n");
 end
--- 调用函数
-print("两值比较最大值为 ",max(10,4))
-print("两值比较最大值为 ",max(5,6))
 
-
-myPrint = function ( param )
+local function func2( ... )
 	-- body
-	print("这是打印函数 -   ##",param,"##");
+	print("这是一个私有函数！")
+end 
 
+function module.func3()
+    func2()
 end
-function add(number1,number2,functionPrint)
-	result = number1 + number2;
-	functionPrint(result);
+
+
+-- co = coroutine.create(
+--     function(i)
+--         print(i);
+--     end
+-- )
+ 
+-- coroutine.resume(co, 1)   -- 1
+-- print(coroutine.status(co))  -- dead
+ 
+-- print("----------")
+ 
+-- co = coroutine.wrap(
+--     function(i)
+--         print(i);
+--     end
+-- )
+ 
+-- co(1)
+ 
+-- print("----------")
+ 
+-- co2 = coroutine.create(
+--     function()
+--         for i=1,10 do
+--             print(i)
+--             if i == 3 then
+--                 print(coroutine.status(co2))  --running
+--                 print(coroutine.running()) --thread:XXXXXX
+--             end
+--             coroutine.yield()
+--         end
+--     end
+-- )
+ 
+-- coroutine.resume(co2) --1
+-- coroutine.resume(co2) --2
+-- coroutine.resume(co2) --3
+ 
+-- print(coroutine.status(co2))   -- suspended
+-- print(coroutine.running())
+ 
+-- print("----------")
+
+function foo( a )
 	-- body
+	 print("foo 函数输出", a)
+    return coroutine.yield(2 * a) -- 返回  2*a 的值
 end
 
-myPrint(10);
-add(2,5,myPrint);
-
-s,e = string.find("www.runoob.com", "runoob") ;
-print(s,e);
-
-function maximum(a)
+co = coroutine.create(function ( a,b )
 	-- body
-	local mi = 1;
-	local m = a[mi];
-	for i,v in ipairs(a) do
-		if v > m then
-			mi = i;
-			m = v;
-			end
-	end
-	return m , mi;
+	print("第一次协同程序执行输出", a, b);
+	local r = foo(a + 1);
+	 print("第二次协同程序执行输出", r);
+	 local r, s = coroutine.yield(a + b, a - b) ;
+	  print("第三次协同程序执行输出", r, s)
+    return b, "结束协同程序"  
 end
+)
+print("main", coroutine.resume(co, 1, 10)) -- true, 4
+--resume成功返回true，yield挂起结束，返回4
+print("--分割线----")
+print("main", coroutine.resume(co, "r")) -- true 11 -9
+print("---分割线---")
+print("main", coroutine.resume(co, "x", "y")) -- true 10 end
+print("---分割线---")
+print("main", coroutine.resume(co, "x", "y")) -- cannot resume dead coroutine
+print("---分割线---")
 
-print(maximum({8,10,23,12,5}));
-
-function average(...)
-	-- body
-	result = 0;
-	local arg = {...};
-	for i,v in ipairs(arg) do
-		result = result + v;
-
-	end
-	print("总共传入 " .. #arg .. " 个数");
-	return result/#arg;
-end
-
-print("平均值为",average(10,5,3,4,5,6));
-
-testString1 = "this the first number";
-testString2 = "number";
-string.upper(testString1);
-print("upper string:"..string.upper(testString1));
-print("lower string:"..string.lower(string.upper(testString1)));
-resultString = string.gsub(testString1,"th","ps",1)
-print(resultString);
-print(testString1);
-print(string.reverse(resultString));
-print(string.format("the value is:%s",testString2));
-print(string.len(testString1));
-print(string.rep(testString2,2));
-
-
-array = {"Lua", "Tutorial"};
-
-for i=1,2 do
-	print(array[i]);
-end
-
-
-array = {}
-
-for i= -2, 2 do
-   array[i] = i *2
-end
-
-for i = -2,2 do
-   print(array[i])
-end
-
-mytable = {}
-print("mytable 的类型是 ",type(array))
-
-mytable[1]= "Lua"
-mytable["wow"] = "修改前"
-print("mytable 索引为 1 的元素是 ", mytable[1])
-print("mytable 索引为 wow 的元素是 ", mytable["wow"])
-
-
-alternatetable = mytable
-
-print("alternatetable 索引为 1 的元素是 ", alternatetable[1])
-print("mytable 索引为 wow 的元素是 ", alternatetable["wow"])
-
-alternatetable["wow"] = "修改后"
-
-print("mytable 索引为 wow 的元素是 ", mytable["wow"])
-
-alternatetable = nil
-print("alternatetable 是 ", alternatetable)
-
-print("mytable 索引为 wow 的元素是 ", mytable["wow"])
-
-mytable = nil
-print("mytable 是 ", mytable)
-
-
-fruits = {"banana","orange","apple"}
--- 返回 table 连接后的字符串
-print("连接后的字符串 ",table.concat(fruits))
-
--- 指定连接字符
-print("连接后的字符串 ",table.concat(fruits,", "))
-
--- 指定索引来连接 table
-print("连接后的字符串 ",table.concat(fruits,", ", 2,3))
-
-
-table.insert(fruits,"mango");
-print("索引为 4 的元素为 ",fruits[4]);
-
-table.insert(fruits,2,"grapes");
-print("索引为 2 的元素为 ",fruits[2]);
-print("最后一个元素为 ",fruits[5]);
-table.remove(fruits)
-print("移除后最后一个元素为 ",fruits[5])
-
-
-fruits = {"banana","orange","apple","grapes"}
-print("排序前")
-for k,v in ipairs(fruits) do
-    print(k,v)
-end
-
-table.sort(fruits);
-print("排序后")
-for k,v in ipairs(fruits) do
-    print(k,v)
-end
+ 
+return module;
 
 
