@@ -168,8 +168,5 @@ for k,v in ipairs(fruits) do
 end
 
 
-local m = 1 require("module");
-print(m.constant);
-m.func3();
 
 
