@@ -1,0 +1,3 @@
+--print("hello lua");
+local num = 100;
+print(num);

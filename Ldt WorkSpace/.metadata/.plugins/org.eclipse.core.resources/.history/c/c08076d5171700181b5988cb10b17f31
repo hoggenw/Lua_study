@@ -1,0 +1,17 @@
+
+function copyPeople(tab)
+	local ins = {};
+	 for key, var in pairs(tab) do
+	 	 ins[key] = var;
+	 end
+	return ins;
+end
+
+People = {}
+People.sayHi = function ()
+	print("pepeo say i");
+end
+
+local p = copyPeople(People);
+p.sayHi();
+
