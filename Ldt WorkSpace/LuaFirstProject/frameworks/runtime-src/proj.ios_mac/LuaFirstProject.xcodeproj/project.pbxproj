@@ -78,14 +78,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		11271849203F1790009CB635 /* PBXContainerItemProxy */ = {
+		111D985E203FB84800184A44 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 15A8A4031834BDA200142BE0 /* cocos2d_libs.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 507B40FD1C31BDD30067B53E;
 			remoteInfo = "libcocos2d tvOS";
 		};
-		1127184C203F1790009CB635 /* PBXContainerItemProxy */ = {
+		111D9861203FB84800184A44 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C03781AE18BF654500FE4F13 /* cocos2d_lua_bindings.xcodeproj */;
 			proxyType = 2;
@@ -308,7 +308,7 @@
 			children = (
 				15A8A4171834BDA200142BE0 /* libcocos2d Mac.a */,
 				15A8A4251834BDA200142BE0 /* libcocos2d iOS.a */,
-				1127184A203F1790009CB635 /* libcocos2d tvOS.a */,
+				111D985F203FB84800184A44 /* libcocos2d tvOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -384,7 +384,7 @@
 			children = (
 				15427CC2198F220600DC375D /* libluacocos2d Mac.a */,
 				15427CD2198F220600DC375D /* libluacocos2d iOS.a */,
-				1127184D203F1790009CB635 /* libluacocos2d tvOS.a */,
+				111D9862203FB84800184A44 /* libluacocos2d tvOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -558,18 +558,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		1127184A203F1790009CB635 /* libcocos2d tvOS.a */ = {
+		111D985F203FB84800184A44 /* libcocos2d tvOS.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = "libcocos2d tvOS.a";
-			remoteRef = 11271849203F1790009CB635 /* PBXContainerItemProxy */;
+			remoteRef = 111D985E203FB84800184A44 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		1127184D203F1790009CB635 /* libluacocos2d tvOS.a */ = {
+		111D9862203FB84800184A44 /* libluacocos2d tvOS.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = "libluacocos2d tvOS.a";
-			remoteRef = 1127184C203F1790009CB635 /* PBXContainerItemProxy */;
+			remoteRef = 111D9861203FB84800184A44 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		15427CC2198F220600DC375D /* libluacocos2d Mac.a */ = {
@@ -889,7 +889,7 @@
 					"$(SRCROOT)/../../cocos2d-x/tools/simulator/libsimulator/lib",
 				);
 				INFOPLIST_FILE = ios/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = (
 					"$(_COCOS_LIB_IOS_BEGIN)",
@@ -928,7 +928,7 @@
 					"$(SRCROOT)/../../cocos2d-x/tools/simulator/libsimulator/lib",
 				);
 				INFOPLIST_FILE = ios/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = (
 					"$(_COCOS_LIB_IOS_BEGIN)",
